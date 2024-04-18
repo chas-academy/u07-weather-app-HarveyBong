@@ -5,7 +5,7 @@
 Jag ska skapa en väder app med hjälp utav Openweather API
 
 Mål med uppgiften:
-- [ ] #1
+- [x] #1
 - [ ] #2
 - [ ] #3
 - [ ] #4
