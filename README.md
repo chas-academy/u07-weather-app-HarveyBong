@@ -19,7 +19,7 @@ Jag ska skapa en väder app med hjälp utav Openweather API där användaren ska
 
 ## Tasks:
 - [x] #1
-- [ ] #2
+- [ ] https://github.com/chas-academy/u07-weather-app-HarveyBong/issues/3
 - [ ] #3
 - [ ] #4
 - [ ] #5
