@@ -2,9 +2,22 @@
 
 
 
-Jag ska skapa en väder app med hjälp utav Openweather API
+Jag ska skapa en väder app med hjälp utav Openweather API där användaren ska kunna se vädret baserat på sin plats eller 
+## Mål med uppgiften
 
-Mål med uppgiften:
+1. Förstasidan ska visa vädret baserat på användarens plats (geolocation)
+
+2. Kunna visa Plats, Temperatur, Vindstyrka, Luftfuktighet, Soluppgång och nedgång samt välja mellan Fahrenheit och Celcius.
+
+<br> <br>
+
+```[tasklist]
+### My tasks
+- [ ] https://github.com/octo-org/octo-repo/issues/45
+- [ ] Draft task
+```
+
+## Tasks:
 - [x] #1
 - [ ] #2
 - [ ] #3
@@ -18,9 +31,9 @@ Mål med uppgiften:
 - [ ] #11
 - [ ] #12
 
+<br>
 
-
-
+## Lofi Skiss
 
 
 Lofi-desktop            |  Lofi-mobile
