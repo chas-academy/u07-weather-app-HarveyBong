@@ -18,9 +18,9 @@ Jag ska skapa en väder app med hjälp utav Openweather API där användaren ska
 ```
 
 ## Tasks:
-- [x] #1
-- [ ] https://github.com/chas-academy/u07-weather-app-HarveyBong/issues/3
-- [ ] #3
+- [x] Clone down repository, #1
+- [x] Install zustand immer and tailwind 2#
+- [x] Fix geolocation and connect API  #3
 - [ ] #4
 - [ ] #5
 - [ ] #6
