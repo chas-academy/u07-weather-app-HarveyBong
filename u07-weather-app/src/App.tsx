@@ -13,14 +13,22 @@ const App = () => {
     <div>
       {weather ? (
         <>
+        <p>Min plats</p>
+        <p>{weather.city}</p>
+        <p>Land: {weather.country}</p>
+
+        <p>{weather.descript}</p>
+
+        <h2 className="text-4xl">{weather.temperature}°C</h2>
+        <p>data_text: {weather.dt_text}</p>
           <p>Tid: {weather.daytime}</p>
-          <p>Temperatur: {weather.temperature}°C</p>
+          
           <p>Luftfuktighet: {weather.humidity}%</p>
           <p>Vindstyrka: {weather.windSpeed} m/s</p>
           <p>Soluppgång: {weather.sunrise}</p>
           <p>Solnedgång: {weather.sunset}</p>
-          <p>Land: {weather.country}</p>
-          <p>Stad: {weather.city}</p>
+          
+          
         </>
       ) : (
         <p>Hämtar väderinformation...</p>

@@ -15,7 +15,8 @@ export const useWeatherAPI = () => {
         .then((response) => response.json())
         .then((data) =>
           setWeather({
-
+            descript: data.list[0].weather[0].description,
+            dt_text: data.list[0].dt_txt,
             daytime: new Date(data.list[0].dt * 1000).toLocaleTimeString(),
             temperature: data.list[0].main.temp,
           humidity: data.list[0].main.humidity,
