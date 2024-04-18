@@ -18,5 +18,11 @@ Mål med uppgiften:
 - [ ] #11
 - [ ] #12
 
-1. ![Some title here](u07-weather-app\images\lofi-desktop.png)
-![Some title here](u07-weather-app\images\lofi-mobile.png)
+
+
+
+
+
+Lofi-desktop            |  Lofi-mobile
+:-------------------------:|:-------------------------:
+<img src="u07-weather-app\images\lofi-desktop.png" height="400px" > | <img src="u07-weather-app\images\lofi-mobile.png" height="400px" >
