@@ -7,6 +7,11 @@ export const useWeatherAPI = () => {
 
   const APIKEY = "f40a3b64b79561a673ecd41e062044ac";
   const unit= "metric";
+
+  let i = 0;
+  
+   
+  
   useEffect(() => {
     if (location) {
       fetch(
@@ -15,16 +20,19 @@ export const useWeatherAPI = () => {
         .then((response) => response.json())
         .then((data) =>
           setWeather({
-            descript: data.list[0].weather[0].description,
-            dt_text: data.list[0].dt_txt,
-            daytime: new Date(data.list[0].dt * 1000).toLocaleTimeString(),
-            temperature: data.list[0].main.temp,
-          humidity: data.list[0].main.humidity,
-            windSpeed: data.list[0].wind.speed,
+            descript: data.list[i].weather[i].description,
+            dt_text: data.list[i].dt_txt,
+            daytime: new Date(data.list[i].dt * 1000).toLocaleTimeString(),
+            temperature: data.list[i].main.temp,
+            humidity: data.list[i].main.humidity,
+            windSpeed: data.list[i].wind.speed,
             country:data.city.country,
             city:data.city.name,
             sunrise: new Date(data.city.sunrise * 1000).toLocaleTimeString(),
             sunset: new Date(data.city.sunset * 1000).toLocaleTimeString(),
+
+            hightemp: data.list[0].main.temp_max,
+            lowtemp: data.list[0].main.temp_min,
           })
         );
     }
