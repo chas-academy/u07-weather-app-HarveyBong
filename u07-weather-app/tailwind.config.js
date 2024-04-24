@@ -8,6 +8,7 @@ export default {
     extend: {},
   },
   plugins: [
+    require('tailwind-scrollbar')({ preferredStrategy: 'pseudoelements' }),
     function({addUtilities}){
       const newUtilities={
         ".scrollbar-thin":{
