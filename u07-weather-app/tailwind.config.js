@@ -3,11 +3,13 @@ export default {
   content: [
     "./index.html","./src/App.css",
     "./src/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/flowbite/**/*.js"
   ],
   theme: {
     extend: {},
   },
   plugins: [
+    require('flowbite/plugin'),
     require('tailwind-scrollbar')({ preferredStrategy: 'pseudoelements' }),
     function({addUtilities}){
       const newUtilities={
