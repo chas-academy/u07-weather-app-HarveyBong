@@ -6,6 +6,25 @@ export default {
     "./node_modules/flowbite/**/*.js"
   ],
   theme: {
+    colors: {
+      transparent: 'transparent',
+      current: 'currentColor',
+      'white': '#ffffff',
+      'purple': '#3f3cbb',
+      'midnight': '#121063',
+      'metal': '#565584',
+      'tahiti': '#3ab7bf',
+      'silver': '#ecebff',
+      'bubble-gum': '#ff77e9',
+      'bermuda': '#78dcca',
+     'ivory':'#FBFFF1',
+     'onyx' : '#3c3c3b',
+     'lapislazuli': '#175676',
+
+     'columbiablue':'#CEE5F2',
+     'columbiasilver':'#BDD8EA',
+     'columbialightblue':'#ACCBE1',
+     'superiorityblue': '#72a0c1',
     extend: {},
   },
   plugins: [
@@ -15,7 +34,7 @@ export default {
       const newUtilities={
         ".scrollbar-thin":{
           scrollbarWidth: "thin",
-          scrollbarColor: "rgb(31 29 29) white",
+          scrollbarColor: " white",
           scrollbarRound: "rounded-lg"
         },
         ".scrollbar-webkit":{
@@ -36,4 +55,4 @@ export default {
       addUtilities(newUtilities), ["responsive", "hover"]
     }
   ],
-}
+}}

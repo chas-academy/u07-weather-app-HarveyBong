@@ -1,6 +1,8 @@
-import { useWeatherAPI } from './weather/weatherAPI';
+import { useWeatherAPI } from "./weather/weatherAPI";
 import { FiSunset } from "react-icons/fi";
-<script src="../path/to/flowbite/dist/flowbite.min.js"></script>
+import { FiSunrise } from "react-icons/fi";
+import { FaWind } from "react-icons/fa6";
+
 function App() {
   const { weather, toggleUnit, unit } = useWeatherAPI();
 
@@ -9,41 +11,96 @@ function App() {
   }
 
   return (
-    
-    <div className='flex flex-col items-center justify-center'>
-      <div className='max-w-screen-md p-4 bg-gray-100 rounded-lg shadow-lg'>
-        <h1 className='text-3xl font-bold mb-4'>Väderinformation för {weather.city}, {weather.country}</h1>
-        <h2 className='text-xl'>Nuvarande temperatur: {weather.temperature}°{unit === 'metric' ? 'C' : 'F'}</h2>
-        <button onClick={toggleUnit} className='mt-2 bg-white hover:bg-gray-200 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow'>
-          Toggle Unit
-        </button><br></br>
+    <div className="flex items-center justify-center text-white bg-columbiablue py-10 ">
+      <div className="max-w-screen-md w-full md:w-auto p-4 bg-superiorityblue rounded-lg shadow-lg">
+        <div>
+          <button
+            alt="toggle unit"
+            onClick={toggleUnit}
+            className="mt-2 bg-columbialightblue hover:bg-columbiablue font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+          >
+            °{unit === "metric" ? "C" : "F"}
+          </button>
+        </div>
         
-
-
-        {unit}
-        <h3 className='mt-6 text-lg'>Timme för timme prognos:</h3>
-        <ul className='flex  gap-2  mt-2 overflow-x-scroll'>
+        <div className="text-center items-center">
+          <h1>Min Plats</h1>
+          <h2 className="text-3xl font-bold mb-2 ">
+            {weather.city}, {weather.country}
+          </h2>
+          <h2 className="text-2xl">
+            {weather.temperature}°{unit === "metric" ? "C" : "F"}
+            
+          </h2>
+          <h3>
+            H:{weather.hightemp} L:{weather.lowtemp}
+          </h3>
+          <h3>{weather.descript}</h3>
+          
+          <h3 className="">Luftfuktighet: {weather.humid}%</h3>
+          
+          <h3></h3>
+        </div>
+        <h3 className="mt-6 text-lg">Timme för timme prognos:</h3>
+        <ul className="flex  gap-2 mt-2  overflow-x-auto shadow-inner  rounded-lg p-5">
           {weather.hourlyForecast.map((forecast, index) => (
-            <li key={index} className='bg-white p-4 rounded-lg shadow flex flex-col items-center w-full px-5'>
+            <li
+              key={index}
+              className="bg-columbialightblue hover:bg-columbiablue text-onyx  p-4 rounded-lg shadow flex flex-col items-center min-w-32 md:w-auto "
+            >
               <div>{forecast.time}</div>
               <div>{forecast.icon}</div>
-              <div>Vind: {weather.windSpeed} m/s</div>
-              <div>{forecast.temperature}°{unit === 'metric' ? 'C' : 'F'}</div>
+              <div>
+                {forecast.temperature}°{unit === "metric" ? "C" : "F"}
+              </div>
+              <div className="flex items-center">
+                <div>
+                <FaWind />
+                </div>
+                <div className="mx-2">  {weather.windSpeed} m/s</div>
+              </div>
             </li>
           ))}
         </ul>
-        
-        <h3 className='mt-6 text-lg'>5-dagars prognos:</h3>
-        <ul className='mt-2'>
+
+        <h3 className="mt-6 text-lg">5-dagars prognos:</h3>
+        <ul className="mt-2 overflow-y-auto ">
           {weather.dailyForecast.map((forecast, index) => (
-            <li key={index} className='bg-white p-4 rounded-lg shadow mb-4'>
-              <div>Datum: {forecast.date}</div>
-              <div>Temperatur: {forecast.temperature}°{unit === 'metric' ? 'C' : 'F'}</div>
-              <div>Högsta temperatur: {forecast.hightemp}°{unit === 'metric' ? 'C' : 'F'}</div>
-              <div>Vind: {weather.windSpeed} m/s</div>
-              <div>Lägsta temperatur: {forecast.lowtemp}°{unit === 'metric' ? 'C' : 'F'}</div>
-              <div>{weather.sunrise}</div>
-              <div><FiSunset/> {weather.sunset}</div>
+            <li
+              key={index}
+              className="bg-columbialightblue text-onyx hover:bg-columbiablue p-4 rounded-lg shadow mb-4"
+            >
+              <div className="text-xl font-bold">Datum: {forecast.date}</div>
+              <div>
+                Temperatur: {forecast.temperature}°
+                {unit === "metric" ? "C" : "F"}
+              </div>
+              <div>
+                Högsta temperatur: {forecast.hightemp}°
+                {unit === "metric" ? "C" : "F"}
+              </div>
+              <div>
+                Lägsta temperatur: {forecast.lowtemp}°
+                {unit === "metric" ? "C" : "F"}
+              </div>
+              <div className="flex items-center">
+                <div>
+                <FaWind />
+                </div>
+                <div className="mx-2">  {weather.windSpeed} m/s</div>
+              </div>
+              <div className="flex items-center">
+                <div>
+                  <FiSunrise />
+                </div>
+                <div className="mx-2"> {weather.sunrise}</div>
+              </div>
+              <div className="flex items-center">
+                <div>
+                  <FiSunset />
+                </div>
+                <div className="mx-2">{weather.sunset}</div>
+              </div>
             </li>
           ))}
         </ul>

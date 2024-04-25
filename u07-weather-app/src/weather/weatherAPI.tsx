@@ -5,10 +5,11 @@ import { useGeolocation } from "../geolocation/useGeolocation";
 const useWeatherStore = create((set) => ({
   weather: null,
   unit: "metric", 
-
+ 
   
   fetchWeather: async (location, unit, APIKEY) => {
   
+    
     if (location) {
       try {
         const response = await fetch(
@@ -33,6 +34,8 @@ const useWeatherStore = create((set) => ({
             case 'light rain':
                 return '🌧️';
             case 'rain':
+              return '🌧️';
+              case 'moderate rain':
               return '🌧️';
             case 'thunderstorm':
               return '⛈️';
@@ -68,6 +71,7 @@ const useWeatherStore = create((set) => ({
 
           return acc;
         }, []).map(day => ({
+          humid: day.humidity,
           date: day.date,
           temperature: Math.round(day.temperatures.reduce((total, temp) => total + temp, 0) / day.temperatures.length),
           hightemp: Math.max(...day.temperatures),
@@ -86,6 +90,9 @@ const useWeatherStore = create((set) => ({
             windSpeed: data.list[0].wind.speed,
             country: data.city.country,
             city: data.city.name,
+            humid: data.list[0].main.humidity,
+            hightemp: data.list[0].main.temp_max,
+            lowtemp: data.list[0].main.temp_min,
             sunrise: new Date(data.city.sunrise * 1000).toLocaleTimeString(),
             sunset: new Date(data.city.sunset * 1000).toLocaleTimeString(),
             hourlyForecast,
@@ -105,8 +112,8 @@ export const useWeatherAPI = () => {
  
   const { fetchWeather, weather, unit } = useWeatherStore(); 
 
-  const APIKEY = "f40a3b64b79561a673ecd41e062044ac";
-
+  /*const APIKEYY = "f40a3b64b79561a673ecd41e062044ac";*/
+  const APIKEY = import.meta.env.VITE_API_WEATHER_KEY;
 
   const toggleUnit = () => {
     const newUnit = unit === "metric" ? "imperial" : "metric";
@@ -119,5 +126,5 @@ export const useWeatherAPI = () => {
     fetchWeather(location, unit, APIKEY);
   }, [fetchWeather, location, unit, APIKEY]);
 
-  return { weather, toggleUnit, unit }; 
+  return { weather, toggleUnit, unit,}; 
 };
