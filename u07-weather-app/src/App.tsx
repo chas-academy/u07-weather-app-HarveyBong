@@ -17,8 +17,7 @@ function App() {
           <button
             alt="toggle unit"
             onClick={toggleUnit}
-            className="mt-2 bg-columbialightblue hover:bg-columbiablue font-semibold py-2 px-4 border border-gray-400 rounded shadow"
-          >
+            className="mt-2 bg-columbialightblue hover:bg-columbiablue font-semibold py-2 px-4 border border-gray-400 rounded shadow ">
             °{unit === "metric" ? "C" : "F"}
           </button>
         </div>
@@ -36,10 +35,10 @@ function App() {
             H:{weather.hightemp} L:{weather.lowtemp}
           </h3>
           <h3>{weather.descript}</h3>
+          <h3>{weather.windSpeed}m/s</h3>
           
-          <h3 className="">Luftfuktighet: {weather.humid}%</h3>
+          <h3>Luftfuktighet: {weather.humid}%</h3>
           
-          <h3></h3>
         </div>
         <h3 className="mt-6 text-lg">Timme för timme prognos:</h3>
         <ul className="flex  gap-2 mt-2  overflow-x-auto shadow-inner  rounded-lg p-5">
