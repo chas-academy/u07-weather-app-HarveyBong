@@ -7,7 +7,7 @@ const useWeatherStore = create((set) => ({
   unit: "metric", 
  
   
-  fetchWeather: async (location, unit, APIKEY) => {
+  fetchWeather: async (location: string, unit: string, APIKEY: string) => {
   
     
     if (location) {

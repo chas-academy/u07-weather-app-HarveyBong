@@ -15,7 +15,6 @@ function App() {
       <div className="max-w-screen-md w-full md:w-auto p-4 bg-superiorityblue rounded-lg shadow-lg">
         <div>
           <button
-            alt="toggle unit"
             onClick={toggleUnit}
             className="mt-2 bg-columbialightblue hover:bg-columbiablue font-semibold py-2 px-4 border border-gray-400 rounded shadow ">
             °{unit === "metric" ? "C" : "F"}
@@ -30,24 +29,25 @@ function App() {
           <h2 className="text-2xl">
             {weather.temperature}°{unit === "metric" ? "C" : "F"}
             
+            
           </h2>
           <h3>
             H:{weather.hightemp} L:{weather.lowtemp}
           </h3>
           <h3>{weather.descript}</h3>
-          <h3>{weather.windSpeed}m/s</h3>
+          <h3>{weather.windSpeed} {unit==="metric"? "m/s":"mph"}</h3>
           
           <h3>Luftfuktighet: {weather.humid}%</h3>
           
         </div>
         <h3 className="mt-6 text-lg">Timme för timme prognos:</h3>
-        <ul className="flex  gap-2 mt-2  overflow-x-auto shadow-inner  rounded-lg p-5">
+        <ul className="flex  gap-2 mt-2  overflow-x-auto shadow-inner items-center rounded-lg p-5">
           {weather.hourlyForecast.map((forecast, index) => (
             <li
               key={index}
-              className="bg-columbialightblue hover:bg-columbiablue text-onyx  p-4 rounded-lg shadow flex flex-col items-center min-w-32 md:w-auto "
+              className="bg-columbialightblue hover:bg-columbiablue text-onyx p-6 rounded-lg shadow flex flex-col items-center min-w-40 min-h-40 md:w-auto "
             >
-              <div>{forecast.time}</div>
+              <h2 className="font-bold">{forecast.time}</h2>
               <div>{forecast.icon}</div>
               <div>
                 {forecast.temperature}°{unit === "metric" ? "C" : "F"}
@@ -56,7 +56,7 @@ function App() {
                 <div>
                 <FaWind />
                 </div>
-                <div className="mx-2">  {weather.windSpeed} m/s</div>
+                <div className="mx-2">{weather.windSpeed} {unit==="metric"? "m/s":"mph"}</div>
               </div>
             </li>
           ))}
@@ -86,7 +86,7 @@ function App() {
                 <div>
                 <FaWind />
                 </div>
-                <div className="mx-2">  {weather.windSpeed} m/s</div>
+                <div className="mx-2">  {weather.windSpeed} {unit==="metric"? "m/s":"mph"}</div>
               </div>
               <div className="flex items-center">
                 <div>
