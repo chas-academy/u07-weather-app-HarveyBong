@@ -1,5 +1,5 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/rBfB12PE)
-
+![Netlify Status](https://api.netlify.com/api/v1/badges/ee150467-0352-4214-b559-a767eb058f15/deploy-status)](https://app.netlify.com/sites/weather-harveybong/deploys)
 
 
 Jag ska skapa en väder app med hjälp utav Openweather API där användaren ska kunna se vädret baserat på sin plats eller 
@@ -11,25 +11,17 @@ Jag ska skapa en väder app med hjälp utav Openweather API där användaren ska
 
 <br> <br>
 
-```[tasklist]
-### My tasks
-- [ ] https://github.com/octo-org/octo-repo/issues/45
-- [ ] Draft task
-```
+
 
 ## Tasks:
-- [x] Clone down repository, #1
-- [x] Install zustand immer and tailwind 2#
-- [x] Fix geolocation and connect API  #3
-- [ ] #4
-- [ ] #5
-- [ ] #6
-- [ ] #7
-- [ ] #8
-- [ ] #9
-- [ ] #10
-- [ ] #11
-- [ ] #12
+- [x] Clone down repository,
+- [x] Install zustand immer and tailwind
+- [x] Fix geolocation and connect API 
+- [x] Show 5 upcoming weather conditions
+- [x] Show "hourly" weather conditions (Free API service only provides weather information per 3 hours)
+- [x] Fix toggle between Celcius and Fahrenheit, also m/s and mph
+- [x] Deploy on Netlify
+
 
 <br>
 
