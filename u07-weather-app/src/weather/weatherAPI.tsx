@@ -1,14 +1,19 @@
 import { useEffect } from "react";
 import { create } from 'zustand';
 import { useGeolocation } from "../geolocation/useGeolocation";
+import { WeatherStore } from './weatherTypes';
+
+
 
 const useWeatherStore = create((set) => ({
   weather: null,
   unit: "metric", 
  
   
-  fetchWeather: async (location: string, unit: string, APIKEY: string) => {
+  fetchWeather: async (location: { latitude: number; longitude: number } | null, unit: string, APIKEY: string) => {
   
+
+    
     
     if (location) {
       try {
@@ -17,7 +22,7 @@ const useWeatherStore = create((set) => ({
         );
         const data = await response.json();
         
-        const mapDescriptionToIcon = (description) => {
+        const mapDescriptionToIcon = (description:string) => {
           switch (description) {
             case 'clear sky':
               return '☀️';
@@ -50,13 +55,13 @@ const useWeatherStore = create((set) => ({
           }
         };
 
-        const hourlyForecast = data.list.map(item => ({
+        const hourlyForecast = data.list.map((item: { dt: number; main: { temp: any; }; weather: { description: string; }[]; }) => ({
           time: new Date(item.dt * 1000).toLocaleTimeString([], { hour: '2-digit', hour12: false }),
           temperature: item.main.temp,
           icon: mapDescriptionToIcon(item.weather[0].description),
         }));
 
-        const dailyForecast = data.list.reduce((acc, item) => {
+        const dailyForecast = data.list.reduce((acc: { date: string; temperatures: any[]; }[], item: { dt: number; main: { temp: any; }; }) => {
           const date = new Date(item.dt * 1000).toLocaleDateString();
           const existingDay = acc.find(day => day.date === date);
 
@@ -70,13 +75,13 @@ const useWeatherStore = create((set) => ({
           }
 
           return acc;
-        }, []).map(day => ({
+        }, []).map((day: { humidity: any; date: string; temperatures: any[]; }) => ({
           humid: day.humidity,
           date: day.date,
           temperature: Math.round(day.temperatures.reduce((total, temp) => total + temp, 0) / day.temperatures.length),
           hightemp: Math.max(...day.temperatures),
           lowtemp: Math.min(...day.temperatures),
-          dt_text: data.list.find(item => new Date(item.dt * 1000).toLocaleDateString() === day.date).dt_txt,
+          dt_text: data.list.find((item: { dt: number; }) => new Date(item.dt * 1000).toLocaleDateString() === day.date).dt_txt,
         }));
 
         set({
@@ -107,12 +112,12 @@ const useWeatherStore = create((set) => ({
   },
 }));
 
+
 export const useWeatherAPI = () => {
   const location = useGeolocation();
  
-  const { fetchWeather, weather, unit } = useWeatherStore(); 
+  const { fetchWeather, weather, unit } = useWeatherStore() as WeatherStore; 
 
-  /*const APIKEYY = "f40a3b64b79561a673ecd41e062044ac";*/
   const APIKEY = import.meta.env.VITE_API_WEATHER_KEY;
 
   const toggleUnit = () => {
@@ -122,9 +127,8 @@ export const useWeatherAPI = () => {
   };
 
   useEffect(() => {
-    
     fetchWeather(location, unit, APIKEY);
   }, [fetchWeather, location, unit, APIKEY]);
 
-  return { weather, toggleUnit, unit,}; 
+  return { weather, toggleUnit, unit };
 };
