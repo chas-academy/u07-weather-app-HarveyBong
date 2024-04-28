@@ -11,7 +11,7 @@ Jag ska skapa en väder app med hjälp utav Openweather API där användaren ska
 
 2. Kunna visa Plats, Temperatur, Vindstyrka, Luftfuktighet, Soluppgång och nedgång samt välja mellan Fahrenheit och Celcius.
 
-<br> <br>
+<br> 
 
 
 
