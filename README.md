@@ -2,7 +2,7 @@
 
 <br> <br>
 ![Netlify Status](https://api.netlify.com/api/v1/badges/ee150467-0352-4214-b559-a767eb058f15/deploy-status)
-
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ee150467-0352-4214-b559-a767eb058f15/deploy-status)](https://app.netlify.com/sites/weather-harveybong/deploys)
 
 Jag ska skapa en väder app med hjälp utav Openweather API där användaren ska kunna se vädret baserat på sin plats eller 
 ## Mål med uppgiften
